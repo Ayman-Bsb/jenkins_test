@@ -16,7 +16,7 @@ pipeline {
             }
             steps {
                 echo "NAME: ${ NAME }"
-                echo "TEXT: ${ NAME }"
+                echo "TEXT: ${ TEXT }"
                 echo "TOGGLE: ${ TOGGLE }"
                 echo "CHOICE: ${ CHOICE }"
                 echo "PASSWORD: ${ PASSWORD }"
