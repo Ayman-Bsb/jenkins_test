@@ -1,8 +1,12 @@
 pipeline {
     agent any
 
-    options {
-        timeout(time: 1, unit: "HOURS")
+    parameters {
+        string(name: 'NAME', defaultValue: 'M. Jenkins', description: 'Qui est ce ?')
+        text(name: 'TEXT', defaultValue: 'un text', description: 'une description')
+        booleanParam(name: 'TOGGLE', defaultValue: true, description: 'true ou false')
+        choice(name: 'CHOICE', choices: ['un', 'deux', 'trois', 'quatre'], description: 'liste')
+        password(name: 'PASSWORD', description: 'un password')
     }
 
     stages {
@@ -11,7 +15,11 @@ pipeline {
                 timestamps()
             }
             steps {
-                echo 'Build application ...'
+                echo "NAME: ${ NAME }"
+                echo "TEXT: ${ NAME }"
+                echo "TOGGLE: ${ TOGGLE }"
+                echo "CHOICE: ${ CHOICE }"
+                echo "PASSWORD: ${ PASSWORD }"
             }
         }
     }
