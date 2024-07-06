@@ -1,38 +1,15 @@
 pipeline {
     agent any
 
-    parameters {
-        string(name: 'NAME', defaultValue: 'M. Jenkins', description: 'Qui est ce ?')
-        text(name: 'TEXT', defaultValue: 'un text', description: 'une description')
-        booleanParam(name: 'TOGGLE', defaultValue: true, description: 'true ou false')
-        choice(name: 'CHOICE', choices: ['un', 'deux', 'trois', 'quatre'], description: 'liste')
-        password(name: 'PASSWORD', description: 'un password')
+    triggers {
+        cron('* * * * *')
     }
 
     stages {
         stage('build') {
-            options {
-                timestamps()
-            }
             steps {
-                echo "NAME: ${ NAME }"
-                echo "TEXT: ${ TEXT }"
-                echo "TOGGLE: ${ TOGGLE }"
-                echo "CHOICE: ${ CHOICE }"
-                echo "PASSWORD: ${ PASSWORD }"
+                echo 'build !'
             }
-        }
-    }
-
-    post {
-        always {
-            echo 'always !'
-        }
-        success {
-            echo 'success !'
-        }
-        failure {
-            echo 'failure !'
         }
     }
 }
